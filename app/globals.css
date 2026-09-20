@@ -17,3 +17,17 @@
 
 /* Natural hero photography */
 .hero-visual:before{display:none}.hero-visual img{height:100%;max-height:520px;object-fit:cover;object-position:center 20%;mix-blend-mode:normal;clip-path:none;border-radius:18px}.orbit{display:none}
+
+/* Subtle scroll-led approach sequence */
+@keyframes approach-rise{from{opacity:.15;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes approach-line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes approach-dot{0%{transform:scale(.72);box-shadow:0 0 0 1px #9b9daa}65%{transform:scale(1.24);box-shadow:0 0 0 7px rgba(86,59,241,.12)}100%{transform:scale(1);box-shadow:0 0 0 1px #9b9daa}}
+@supports (animation-timeline:view()){
+  .approach .eyebrow,.approach>h2{animation:approach-rise cubic-bezier(.22,1,.36,1) both;animation-timeline:view();animation-range:entry 0% cover 27%}
+  .steps:before{transform-origin:right center;animation:approach-line linear both;animation-timeline:view();animation-range:entry 6% cover 38%}
+  [dir="ltr"] .steps:before{transform-origin:left center}
+  .steps article{animation:approach-rise cubic-bezier(.22,1,.36,1) both;animation-timeline:view()}
+  .steps article:nth-child(1){animation-range:entry 5% cover 32%}.steps article:nth-child(2){animation-range:entry 10% cover 37%}.steps article:nth-child(3){animation-range:entry 15% cover 42%}.steps article:nth-child(4){animation-range:entry 20% cover 47%}
+  .steps article .step-dot{animation:approach-dot ease-out both;animation-timeline:view();animation-range:entry 12% cover 42%}
+}
+@media(prefers-reduced-motion:reduce){.approach *,.approach:before,.steps:before{animation:none!important;transform:none!important;opacity:1!important}}
