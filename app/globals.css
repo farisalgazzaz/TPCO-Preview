@@ -24,3 +24,6 @@
 [dir="ltr"] .steps:after{animation-direction:reverse}
 @media(max-width:900px){.steps:after{display:none}}
 @media(prefers-reduced-motion:reduce){.steps:after{display:none}.approach *{animation:none!important;transform:none!important;opacity:1!important}}
+
+/* Keep international contact details readable inside both text directions. */
+.contact-direct a{direction:ltr;unicode-bidi:isolate}

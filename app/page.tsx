@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 type Lang = 'ar' | 'en';
 const services = [
@@ -28,14 +28,18 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>('ar');
   const ar = lang === 'ar'; const t = copy[lang];
   const anchors = ['#about','#services','#approach','#projects','#contact'];
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = ar ? 'rtl' : 'ltr';
+  }, [lang, ar]);
   function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); const data = new FormData(event.currentTarget);
     const message = ar ? `مرحباً، أنا ${data.get('name')} من ${data.get('organization')}. ${data.get('message')} — ${data.get('email')}` : `Hello, I’m ${data.get('name')} from ${data.get('organization')}. ${data.get('message')} — ${data.get('email')}`;
     window.open(`https://wa.me/966505527636?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   }
   return (
-    <main dir={ar ? 'rtl' : 'ltr'} className="site-shell">
-      <header className="topbar"><a href="#top" className="brand" aria-label="TPCO home"><span className="brand-mark"><img src="/tpco-mark.svg" alt="" /></span><span><b>ركيزة التحول</b><small>Transformation Pillar</small></span></a><nav aria-label="Primary navigation">{t.nav.map((item,index)=><a key={item} href={anchors[index]}>{item}</a>)}</nav><button className="lang-switch" onClick={()=>setLang(ar?'en':'ar')} aria-label="Switch language">{ar?'EN':'عربي'}</button></header>
+    <main lang={lang} dir={ar ? 'rtl' : 'ltr'} className="site-shell">
+      <header className="topbar"><a href="#top" className="brand" aria-label="TPCO home"><span className="brand-mark"><img src="/tpco-mark.svg" alt="" /></span><span><b>ركيزة التحول</b><small>Transformation Pillar</small></span></a><nav aria-label={ar?'التنقل الرئيسي':'Primary navigation'}>{t.nav.map((item,index)=><a key={item} href={anchors[index]}>{item}</a>)}</nav><button className="lang-switch" onClick={()=>setLang(ar?'en':'ar')} aria-label={ar?'Switch to English':'التبديل إلى العربية'}>{ar?'EN':'عربي'}</button></header>
       <section className="hero" id="top"><div className="hero-copy"><p className="eyebrow"><span />{t.eyebrow}</p><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}<span>↗</span></a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div><p className="marker">{t.marker}</p></div><div className="hero-visual" aria-label="Saudi transformation consultant"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><img src="/hero-natural.png" alt={ar?'مستشار سعودي في التحول الرقمي':'Saudi digital transformation consultant'} /><div className="impact-card"><small>{t.heroStat}</small></div></div></section>
       <section className="about section-pad" id="about"><div className="about-head"><div><p className="eyebrow dark"><span />{t.aboutLabel}</p><h2>{t.aboutTitle}</h2></div><p className="lead-copy">{t.aboutText}</p></div><div className="value-grid">{t.values.map(value=><article key={value[0]}><h3>{value[0]}</h3><p>{value[1]}</p></article>)}</div></section>
       <section className="services section-pad" id="services"><div className="section-heading light"><div><p className="eyebrow"><span />{t.servicesLabel}</p><h2>{t.servicesTitle}</h2></div><p>{t.servicesIntro}</p></div><div className="services-grid-full">{services.map(service=><details className="service-detail" key={service.n}><summary><div className="service-top"><b className="glyph">{service.glyph}</b></div><h3>{ar?service.ar:service.en}</h3><p>{ar?service.descAr:service.descEn}</p><span className="detail-link">{t.details}<b>＋</b></span></summary><div className="detail-body"><b>{t.outputs}</b><ul>{(ar?service.pointsAr:service.pointsEn).map(point=><li key={point}>{point}</li>)}</ul></div></details>)}</div></section>
