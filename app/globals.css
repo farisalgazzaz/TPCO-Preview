@@ -14,3 +14,6 @@
 
 /* Number-free presentation */
 .impact-card{display:flex;align-items:center;min-height:78px}.impact-card small{font-size:12px;font-weight:700}.value-grid h3{margin-top:12px}.service-top{justify-content:flex-end}.service-detail h3{margin-top:44px}.step-dot{margin:42px 0 30px}
+
+/* Natural hero photography */
+.hero-visual:before{display:none}.hero-visual img{height:100%;max-height:520px;object-fit:cover;object-position:center 20%;mix-blend-mode:normal;clip-path:none;border-radius:18px}.orbit{display:none}
