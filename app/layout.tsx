@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tpco-transformation-pillar.leejam-3421.chatgpt.site'),
+  metadataBase: new URL('https://tpco-preview.vercel.app'),
   title: 'ركيزة التحول | TPCO',
   description: 'نحوّل الطموح الرقمي إلى أثر مؤسسي مستدام وقابل للقياس.',
   openGraph: {
