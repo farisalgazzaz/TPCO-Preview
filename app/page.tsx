@@ -31,7 +31,7 @@ export default function Home() {
       <section className={`hero hero-animated${motionPaused ? ' motion-paused' : ''}`} id="top">
         <div className="hero-skyline" aria-hidden="true">
         <svg className="hero-light-lines" viewBox="0 0 2048 1152" width="2048" height="1152" focusable="false">
-          <image href="/riyadh-digital-hero.png" width="2048" height="1152" />
+          <image href="/riyadh-digital-hero-lights.png" width="2048" height="1152" preserveAspectRatio="none" />
           <g fill="none" strokeLinecap="round">
             <path d="M213 878 L215 290" />
             <path d="M373 870 L373 323" />
