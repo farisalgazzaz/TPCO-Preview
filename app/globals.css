@@ -52,14 +52,10 @@
 .hero-light-lines path:nth-child(5){animation-delay:-8s;stroke:#bcaaff}
 .hero-light-lines path:nth-child(6){animation-delay:-5s;animation-duration:11s}
 .hero-light-lines path:nth-child(7){animation-delay:-1s}
-.motion-paused .hero-light-lines path,.motion-paused .hero-emitter-pair{animation-play-state:paused}
-.hero-motion-toggle{position:absolute;bottom:24px;inset-inline-end:clamp(24px,5vw,80px);z-index:3;border:1px solid #ffffff40;border-radius:24px;background:#09132bb3;color:#dce6f5;font-size:14px;padding:10px 16px;cursor:pointer;min-height:44px}
-.hero-motion-toggle:hover{background:#202d4d}
-.hero-motion-toggle:focus-visible{outline:2px solid #d2c6ff;outline-offset:4px}
 @keyframes skyline-light{to{stroke-dashoffset:0}}
 @media(max-width:900px){.hero-light-lines{left:39%;transform:translate(-39%,-50%)}.hero-light-lines .hero-edge-trails{opacity:.45}}
 @media(max-width:560px){.hero-light-lines{left:34%;transform:translate(-34%,-50%)}.hero-light-lines .hero-edge-trails{opacity:.3}}
-@media(prefers-reduced-motion:reduce){.hero-light-lines g,.hero-motion-toggle{display:none}.hero-light-lines path,.hero-emitter-pair{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero-light-lines g{display:none}.hero-light-lines path,.hero-emitter-pair{animation:none}}
 
 /* Shared, responsive primary navigation */
 html{scroll-padding-top:124px}
@@ -206,6 +202,13 @@ html{scroll-padding-top:124px}
 .contact{grid-template-columns:minmax(270px,.82fr) minmax(220px,.64fr) minmax(380px,1.08fr);gap:42px;align-items:end;overflow:hidden}
 .contact.contact-conversation{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .contact-story{min-width:0;display:grid;gap:28px}
+.contact-address{font-style:normal;font-size:var(--copy-size);line-height:1.7;border-top:1px solid #313951;padding-top:24px}
+.contact-address strong{display:block;color:#fff;margin-bottom:8px}
+.contact-address a{display:block;color:#b5bfd3;border-radius:4px}
+.contact-address a span{display:block}
+.contact-address .contact-map-link{color:#c3b7ff;margin-top:10px;text-decoration:underline;text-underline-offset:5px}
+.contact-address a:hover .contact-map-link{color:#fff}
+.contact-address a:focus-visible{outline:2px solid #c3b7ff;outline-offset:6px}
 .contact-team-photo{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px}
 .contact-conversation form{min-width:0;width:100%;max-width:100%;grid-template-columns:repeat(2,minmax(0,1fr));padding:clamp(22px,3vw,40px);margin:0;align-self:center;border-radius:16px;gap:24px 18px}
 .contact-conversation label{min-width:0;color:#e0e4ef}

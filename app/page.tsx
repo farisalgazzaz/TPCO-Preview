@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent } from 'react';
 import { services } from './services/content';
 import { useLanguage } from './use-language';
 import { SiteHeader } from './site-header';
@@ -19,7 +19,6 @@ const copy = {
 
 export default function Home() {
   const [lang, setLang] = useLanguage();
-  const [motionPaused, setMotionPaused] = useState(false);
   const ar = lang === 'ar'; const t = copy[lang];
   function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); const data = new FormData(event.currentTarget);
@@ -29,7 +28,7 @@ export default function Home() {
   return (
     <main lang={lang} dir={ar ? 'rtl' : 'ltr'} className="site-shell">
       <SiteHeader lang={lang} setLang={setLang} />
-      <section className={`hero hero-animated${motionPaused ? ' motion-paused' : ''}`} id="top">
+      <section className="hero hero-animated" id="top">
         <div className="hero-skyline" aria-hidden="true">
         <svg className="hero-light-lines" viewBox="0 0 2048 1152" width="2048" height="1152" focusable="false">
           <defs>
@@ -63,8 +62,7 @@ export default function Home() {
           </g>)}
         </svg>
         </div>
-        <div className="hero-copy"><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}<span>↗</span></a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div></div>
-        <button type="button" className="hero-motion-toggle" aria-pressed={motionPaused} onClick={() => setMotionPaused(!motionPaused)}>{ar ? (motionPaused ? 'تشغيل الحركة' : 'إيقاف الحركة') : (motionPaused ? 'Play animation' : 'Pause animation')}</button>
+        <div className="hero-copy"><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}</a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div></div>
       </section>
       <section className="about section-pad" id="about"><img className="section-clip about-clip" src="/brand/clip-angle.png" alt="" aria-hidden="true" /><div className="about-head"><div><h2>{t.aboutTitle}</h2></div><p className="lead-copy">{t.aboutText}</p></div><div className="value-grid">{t.values.map(value=><article key={value[0]}><h3>{value[0]}</h3><p>{value[1]}</p></article>)}</div></section>
       <section className="services section-pad" id="services"><div className="section-heading light"><div><h2>{t.servicesTitle}</h2></div><p>{t.servicesIntro}</p></div><div className="services-grid-full">{services.map(service=><a className="service-detail service-card-link" key={service.n} href={`/services/${service.slug}?lang=${lang}`}><div className="service-top"><b className="glyph" aria-hidden="true">{service.glyph}</b></div><h3>{ar?service.ar:service.en}</h3><p>{ar?service.descAr:service.descEn}</p><span className="detail-link">{t.details}</span></a>)}</div></section>
@@ -75,6 +73,14 @@ export default function Home() {
         <div className="contact-story">
           <div className="contact-copy"><h2 id="contact-title">{t.contactTitle}</h2><p>{t.contactText}</p></div>
           <img className="contact-team-photo" src="/saudi-team-conversation.webp" width="1536" height="1024" loading="lazy" alt={ar ? 'مشهد توضيحي لمهنيين سعوديين يتبادلون الأفكار في اجتماع عمل' : 'Illustrative scene of Saudi professionals sharing ideas in a collaborative meeting'} />
+          <address className="contact-address">
+            <strong>{ar ? 'موقعنا' : 'Our location'}</strong>
+            <a href="https://www.google.com/maps/search/?api=1&query=24.766584953574657%2C46.70680109905242" target="_blank" rel="noreferrer">
+              <span>{ar ? 'طريق الإمام سعود بن عبدالعزيز بن محمد الفرعي' : 'Imam Saud bin Abdulaziz bin Mohammed Service Road'}</span>
+              <span>{ar ? 'حي التعاون، الرياض، المملكة العربية السعودية' : 'Al Taawun District, Riyadh, Saudi Arabia'}</span>
+              <span className="contact-map-link">{ar ? 'عرض الموقع على الخريطة' : 'View location on the map'}</span>
+            </a>
+          </address>
         </div>
         <form onSubmit={submitContact} aria-label={ar ? 'نموذج التواصل' : 'Contact form'}>
           <label>{t.fields[0]}<input required name="name" autoComplete="name" /></label>
