@@ -11,6 +11,8 @@
 .site-shell .service-card-link h3,.site-shell .value-grid h3{font-size:1.5rem;line-height:1.4}
 .site-shell .section-heading{align-items:center}
 .site-shell .section-heading>p{margin:0}
+.site-shell .about-head{align-items:center}
+.site-shell .about-head .lead-copy{margin:0}
 .site-shell .value-grid p,.site-shell .steps p{max-width:36ch}
 .site-shell .contact form .button{white-space:normal;text-align:center;padding-block:14px}
 @media(max-width:1200px) and (min-width:901px){.site-shell .project-card{grid-template-columns:1fr}.site-shell .project-visual{min-height:210px}}
