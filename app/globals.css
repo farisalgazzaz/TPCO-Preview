@@ -1,12 +1,52 @@
 @import 'tailwindcss';
 
+/* Shared, responsive primary navigation */
+html{scroll-padding-top:124px}
+.topbar.interactive-topbar{position:fixed;height:104px;gap:24px;transition:background .25s,box-shadow .25s;z-index:50}
+.topbar.interactive-topbar.is-scrolled,.topbar.interactive-topbar.menu-open{background:rgba(10,17,38,.97);backdrop-filter:blur(16px);box-shadow:0 8px 30px #050b2026}
+.topbar.interactive-topbar nav{display:flex;gap:8px;font-size:1.125rem;font-weight:600}
+.topbar.interactive-topbar nav a{position:relative;display:flex;align-items:center;min-height:48px;padding:10px 16px;border-radius:8px;opacity:.9;white-space:nowrap;transition:background .2s,color .2s,opacity .2s}
+.topbar.interactive-topbar nav a::after{content:"";position:absolute;inset-inline:16px;bottom:3px;height:2px;border-radius:2px;background:#b8a7ff;transform:scaleX(0);transform-origin:center;transition:transform .2s}
+.topbar.interactive-topbar nav a:hover,.topbar.interactive-topbar nav a[aria-current]{opacity:1;background:#a894ff1f;color:#e1d9ff}
+.topbar.interactive-topbar nav a:hover::after,.topbar.interactive-topbar nav a[aria-current]::after{transform:scaleX(1)}
+.interactive-topbar .lang-switch{font-size:1rem;min-height:46px;transition:background .2s,border-color .2s}
+.interactive-topbar .lang-switch:hover{background:#a894ff30;border-color:#c5b7ff}
+.interactive-topbar a:focus-visible,.interactive-topbar button:focus-visible{outline:2px solid #d2c6ff;outline-offset:5px}
+.interactive-topbar .menu-toggle{display:none}
+.service-page:has(.interactive-topbar){padding-top:104px}
+@media(max-width:1000px){
+  .topbar.interactive-topbar{gap:12px}
+  .interactive-topbar .brand{margin-inline-end:auto}
+  .interactive-topbar .menu-toggle{display:flex;align-items:center;gap:9px;min-height:46px;padding:8px 12px;border:1px solid #ffffff47;border-radius:8px;background:#ffffff0d;color:white;cursor:pointer;font-size:1rem}
+  .menu-toggle-icon{width:18px;display:grid;gap:4px}
+  .menu-toggle-icon i{height:2px;background:currentColor;transition:transform .2s,opacity .2s}
+  .menu-open .menu-toggle-icon i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .menu-open .menu-toggle-icon i:nth-child(2){opacity:0}
+  .menu-open .menu-toggle-icon i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .topbar.interactive-topbar nav{display:none;position:absolute;top:100%;inset-inline:16px;padding:12px;flex-direction:column;background:#101a32;border:1px solid #ffffff26;border-radius:0 0 14px 14px;box-shadow:0 16px 30px #050b204d;max-height:calc(100dvh - 120px);overflow-y:auto}
+  .topbar.interactive-topbar.menu-open nav{display:flex;animation:menu-reveal .2s ease-out}
+  .topbar.interactive-topbar nav a{min-height:50px}
+}
+@media(max-width:560px){
+  html{scroll-padding-top:102px}
+  .topbar.interactive-topbar{height:86px;padding-inline:18px;gap:10px}
+  .interactive-topbar .brand{min-width:88px}
+  .interactive-topbar .lang-switch{min-width:54px;padding-inline:10px}
+  .service-page:has(.interactive-topbar){padding-top:86px}
+}
+@keyframes menu-reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+  html:root{scroll-behavior:auto}
+  .topbar.interactive-topbar,.topbar.interactive-topbar nav a,.topbar.interactive-topbar nav a::after,.interactive-topbar .lang-switch,.menu-toggle-icon i{transition:none}
+  .topbar.interactive-topbar.menu-open nav{animation:none}
+}
+
 /* Dedicated service pages */
 .service-card-link{padding:28px;display:flex;flex-direction:column;min-height:420px}
 .service-card-link>p{font-size:16px;line-height:1.8;color:#bec5d6;margin:0}
 .service-card-link .detail-link{font-size:14px}
 .service-card-link:focus-visible,.service-page a:focus-visible,.service-page button:focus-visible{outline:3px solid #a894ff;outline-offset:5px}
 .service-page .service-topbar{position:relative;background:#10172d;height:104px}
-.service-page .topbar nav{font-size:16px}
 .service-hero{display:grid;grid-template-columns:1fr 1fr;background:#10172d;color:white;min-height:600px}
 .service-hero-copy{padding:72px clamp(24px,6vw,96px);align-self:center}
 .service-hero h1{font-size:clamp(42px,4.4vw,70px);line-height:1.18;letter-spacing:-.02em}

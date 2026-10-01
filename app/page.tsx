@@ -3,6 +3,7 @@
 import { FormEvent } from 'react';
 import { services } from './services/content';
 import { useLanguage } from './use-language';
+import { SiteHeader } from './site-header';
 
 const projects = [
   { no:'01', clientAr:'جامعة القصيم', clientEn:'Qassim University', typeAr:'التحول الرقمي', typeEn:'Digital Transformation', titleAr:'خارطة طريق التحول الرقمي المؤسسي', titleEn:'Institutional Digital Transformation Roadmap', descAr:'تشخيص النضج الرقمي وتحديد المبادرات ذات الأولوية وبناء خارطة تنفيذ مترابطة تدعم مستهدفات الجامعة', descEn:'Assessing digital maturity, prioritizing initiatives, and building an integrated execution roadmap aligned with the university’s goals', tagsAr:['قياس النضج','خارطة الطريق','حوكمة المبادرات'], tagsEn:['Maturity','Roadmap','Governance'], tone:'violet' },
@@ -18,7 +19,6 @@ const copy = {
 export default function Home() {
   const [lang, setLang] = useLanguage();
   const ar = lang === 'ar'; const t = copy[lang];
-  const anchors = ['#about','#services','#approach','#projects','#contact'];
   function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); const data = new FormData(event.currentTarget);
     const message = ar ? `مرحباً، أنا ${data.get('name')} من ${data.get('organization')}. ${data.get('message')} — ${data.get('email')}` : `Hello, I’m ${data.get('name')} from ${data.get('organization')}. ${data.get('message')} — ${data.get('email')}`;
@@ -26,7 +26,7 @@ export default function Home() {
   }
   return (
     <main lang={lang} dir={ar ? 'rtl' : 'ltr'} className="site-shell">
-      <header className="topbar"><a href="#top" className="brand" aria-label="TPCO home"><img className="brand-logo" src="/brand/tpco-logo-white.svg" alt={ar?'شركة ركيزة التحول':'Transformation Pillar Company'} /></a><nav aria-label={ar?'التنقل الرئيسي':'Primary navigation'}>{t.nav.map((item,index)=><a key={item} href={anchors[index]}>{item}</a>)}</nav><button className="lang-switch" onClick={()=>setLang(ar?'en':'ar')} aria-label={ar?'Switch to English':'التبديل إلى العربية'}>{ar?'EN':'عربي'}</button></header>
+      <SiteHeader lang={lang} setLang={setLang} />
       <section className="hero" id="top"><div className="hero-copy"><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}<span>↗</span></a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div><p className="marker">{t.marker}</p></div></section>
       <section className="about section-pad" id="about"><img className="section-clip about-clip" src="/brand/clip-angle.png" alt="" aria-hidden="true" /><div className="about-head"><div><h2>{t.aboutTitle}</h2></div><p className="lead-copy">{t.aboutText}</p></div><div className="value-grid">{t.values.map(value=><article key={value[0]}><h3>{value[0]}</h3><p>{value[1]}</p></article>)}</div></section>
       <section className="services section-pad" id="services"><div className="section-heading light"><div><h2>{t.servicesTitle}</h2></div><p>{t.servicesIntro}</p></div><div className="services-grid-full">{services.map(service=><a className="service-detail service-card-link" key={service.n} href={`/services/${service.slug}?lang=${lang}`}><div className="service-top"><b className="glyph" aria-hidden="true">{service.glyph}</b></div><h3>{ar?service.ar:service.en}</h3><p>{ar?service.descAr:service.descEn}</p><span className="detail-link">{t.details}</span></a>)}</div></section>

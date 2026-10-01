@@ -3,6 +3,7 @@
 import { services } from '../content';
 import { serviceDetails } from '../details';
 import { useLanguage } from '../../use-language';
+import { SiteHeader } from '../../site-header';
 
 export default function ServicePage({ slug }: { slug: string }) {
   const [lang, setLang] = useLanguage();
@@ -33,13 +34,7 @@ export default function ServicePage({ slug }: { slug: string }) {
   };
   return (
     <main className="site-shell service-page" dir={ar ? 'rtl' : 'ltr'} lang={lang}>
-      <header className="topbar service-topbar">
-        <a className="brand" href={home} aria-label={labels.home}><img className="brand-logo" src="/brand/tpco-logo-white.svg" alt={ar ? 'شركة ركيزة التحول' : 'Transformation Pillar Company'} /></a>
-        <nav aria-label={ar ? 'التنقل الرئيسي' : 'Primary navigation'}>
-          <a href={home}>{labels.home}</a><a href={`${home}#services`}>{labels.services}</a><a href={`${home}#contact`}>{labels.contact}</a>
-        </nav>
-        <button className="lang-switch" onClick={() => setLang(ar ? 'en' : 'ar')} aria-label={ar ? 'Switch to English' : 'التبديل إلى العربية'}>{ar ? 'EN' : 'عربي'}</button>
-      </header>
+      <SiteHeader lang={lang} setLang={setLang} servicePage />
       <section className="service-hero">
         <div className="service-hero-copy">
           <h1>{title}</h1>
