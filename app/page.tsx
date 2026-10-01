@@ -72,7 +72,7 @@ export default function Home() {
       <section className="contact contact-conversation section-pad" id="contact" aria-labelledby="contact-title">
         <div className="contact-story">
           <div className="contact-copy"><h2 id="contact-title">{t.contactTitle}</h2><p>{t.contactText}</p></div>
-          <img className="contact-team-photo" src="/saudi-team-conversation.webp" width="1536" height="1024" loading="lazy" alt={ar ? 'مشهد توضيحي لمهنيين سعوديين يتبادلون الأفكار في اجتماع عمل' : 'Illustrative scene of Saudi professionals sharing ideas in a collaborative meeting'} />
+          <img className="contact-team-photo" src="/saudi-team-conversation-v2.webp" width="1536" height="1024" loading="lazy" alt={ar ? 'مشهد توضيحي لمهنيين سعوديين يتبادلون الأفكار في اجتماع عمل' : 'Illustrative scene of Saudi professionals sharing ideas in a collaborative meeting'} />
           <address className="contact-address">
             <strong>{ar ? 'موقعنا' : 'Our location'}</strong>
             <a href="https://www.google.com/maps/search/?api=1&query=24.766584953574657%2C46.70680109905242" target="_blank" rel="noreferrer">
