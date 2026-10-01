@@ -1,9 +1,11 @@
 @import 'tailwindcss';
 
 /* Light pulses follow the existing skyline without moving the photograph */
-.hero.hero-animated{overflow:hidden}
-.hero-light-lines{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;z-index:0;opacity:.65}
-.hero-light-lines path{stroke:#a8edff;stroke-width:2;stroke-dasharray:72 980;stroke-dashoffset:1052;filter:drop-shadow(0 0 5px #3fa9ff);animation:skyline-light 10s linear infinite}
+.hero.hero-animated{overflow:hidden;background-image:none}
+.hero-skyline{position:absolute;inset:0;container-type:size;pointer-events:none;z-index:-2;overflow:hidden}
+.hero-light-lines{position:absolute;left:50%;top:50%;width:max(100cqw,177.777778cqh);height:max(100cqh,56.25cqw);max-width:none;transform:translate(-50%,-50%)}
+.hero-light-lines g{opacity:.65}
+.hero-light-lines path{stroke:#a8edff;stroke-width:1.5;stroke-dasharray:72 980;stroke-dashoffset:1052;animation:skyline-light 10s linear infinite}
 .hero-light-lines path:nth-child(2){animation-delay:-4s}
 .hero-light-lines path:nth-child(3){animation-delay:-7s;animation-duration:12s}
 .hero-light-lines path:nth-child(4){animation-delay:-2s}
@@ -15,9 +17,9 @@
 .hero-motion-toggle:hover{background:#202d4d}
 .hero-motion-toggle:focus-visible{outline:2px solid #d2c6ff;outline-offset:4px}
 @keyframes skyline-light{to{stroke-dashoffset:0}}
-@media(max-width:900px){.hero-light-lines{object-position:39% center;opacity:.45}}
-@media(max-width:560px){.hero-light-lines{object-position:34% center;opacity:.3}}
-@media(prefers-reduced-motion:reduce){.hero-light-lines,.hero-motion-toggle{display:none}.hero-light-lines path{animation:none}}
+@media(max-width:900px){.hero-light-lines{left:39%;transform:translate(-39%,-50%)}.hero-light-lines g{opacity:.45}}
+@media(max-width:560px){.hero-light-lines{left:34%;transform:translate(-34%,-50%)}.hero-light-lines g{opacity:.3}}
+@media(prefers-reduced-motion:reduce){.hero-light-lines g,.hero-motion-toggle{display:none}.hero-light-lines path{animation:none}}
 
 /* Shared, responsive primary navigation */
 html{scroll-padding-top:124px}

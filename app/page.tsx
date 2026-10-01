@@ -29,17 +29,20 @@ export default function Home() {
     <main lang={lang} dir={ar ? 'rtl' : 'ltr'} className="site-shell">
       <SiteHeader lang={lang} setLang={setLang} />
       <section className={`hero hero-animated${motionPaused ? ' motion-paused' : ''}`} id="top">
-        <svg className="hero-light-lines" viewBox="0 0 2048 1152" width="2048" height="1152" aria-hidden="true" focusable="false">
+        <div className="hero-skyline" aria-hidden="true">
+        <svg className="hero-light-lines" viewBox="0 0 2048 1152" width="2048" height="1152" focusable="false">
+          <image href="/riyadh-digital-hero.png" width="2048" height="1152" />
           <g fill="none" strokeLinecap="round">
-            <path d="M218 893 L218 295" />
-            <path d="M358 902 L355 325" />
-            <path d="M462 907 L494 226 L535 217" />
-            <path d="M539 927 L558 227 L585 251" />
-            <path d="M594 922 L594 574 L644 560" />
-            <path d="M678 930 L678 663 L738 649" />
-            <path d="M809 932 L808 663 L841 637" />
+            <path d="M213 878 L215 290" />
+            <path d="M373 870 L373 323" />
+            <path d="M474 866 L479 528 L488 350 L495 239 L504 225 L531 218" />
+            <path d="M596 869 L597 532 L592 352 L587 246 L564 228" />
+            <path d="M403 861 L400 553 L454 532" />
+            <path d="M686 668 L686 559 L628 570" />
+            <path d="M882 733 L882 648 L842 631" />
           </g>
         </svg>
+        </div>
         <div className="hero-copy"><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}<span>↗</span></a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div></div>
         <button type="button" className="hero-motion-toggle" aria-pressed={motionPaused} onClick={() => setMotionPaused(!motionPaused)}>{ar ? (motionPaused ? 'تشغيل الحركة' : 'إيقاف الحركة') : (motionPaused ? 'Play animation' : 'Pause animation')}</button>
       </section>
