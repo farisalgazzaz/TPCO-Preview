@@ -28,7 +28,7 @@ export function TeamExperience({ lang }: { lang: Language }) {
   const ar = lang === 'ar';
   return <section className={`team-experience section-pad${paused ? ' logos-paused' : ''}`} id="team-experience" aria-labelledby="team-experience-title">
     <div className="team-experience-heading">
-      <h2 id="team-experience-title">{ar ? 'جهات عمل معها فريقنا قبل الانضمام إلى ركيزة التحول' : 'Organizations our team served before joining TPCO'}</h2>
+      <h2 id="team-experience-title">{ar ? 'خبرات تقف خلف تميّزنا' : 'The experience behind our expertise'}</h2>
       <button type="button" className="logos-motion-toggle" aria-pressed={paused} aria-label={ar ? (paused ? 'تشغيل حركة الشعارات' : 'إيقاف حركة الشعارات') : (paused ? 'Play logo animation' : 'Pause logo animation')} onClick={() => setPaused(!paused)}><span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span></button>
     </div>
     <div className="team-logo-window">
