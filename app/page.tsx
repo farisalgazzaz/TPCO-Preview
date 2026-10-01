@@ -88,7 +88,6 @@ export default function Home() {
           <label className="full">{t.fields[2]}<input required name="organization" autoComplete="organization" /></label>
           <label className="full">{t.fields[3]}<textarea required name="message" rows={5} /></label>
           <button className="button primary full" type="submit">{t.send}</button>
-          <div className="contact-direct full"><small>{t.direct}</small><a href="https://wa.me/966505527636" target="_blank" rel="noreferrer">+966 50 552 7636</a></div>
         </form>
       </section>
       <footer><a href="#top" className="brand" aria-label="TPCO home"><img className="brand-logo footer-logo" src="/brand/tpco-logo-white.svg" alt={ar?'شركة ركيزة التحول':'Transformation Pillar Company'} /></a><p>{t.rights}</p><a href="#top" className="back-top">↑</a></footer>
