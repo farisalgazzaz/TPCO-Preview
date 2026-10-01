@@ -1,5 +1,20 @@
 @import 'tailwindcss';
 
+/* A shared reading scale for English and Arabic across all pages */
+.site-shell{--copy-size:clamp(1.125rem,1rem + .25vw,1.25rem);--intro-size:clamp(1.375rem,1.125rem + .5vw,1.625rem);--label-size:1rem}
+.site-shell .section-heading>p,.site-shell .lead-copy,.site-shell .hero-intro,.site-shell .service-hero-copy>p,.site-shell .journey-intro,.site-shell .service-cta>p,.site-shell .contact-copy>p:not(.eyebrow){font-size:var(--intro-size);line-height:1.75;max-width:65ch}
+.site-shell .value-grid p,.site-shell .service-card-link>p,.site-shell .steps p,.site-shell .project-copy p,.site-shell .service-overview p,.site-shell .service-scope li,.site-shell .service-outputs p,.site-shell .service-outputs li,.site-shell .service-journey-grid article>p,.site-shell .journey-checkpoint p{font-size:var(--copy-size);line-height:1.8}
+.site-shell .detail-link,.site-shell .button,.site-shell .contact label,.site-shell .contact-direct small,.site-shell .journey-checkpoint strong,.site-shell .service-sections,.site-shell .service-related a{font-size:var(--label-size);line-height:1.6}
+.site-shell .contact input,.site-shell .contact textarea{font-size:var(--copy-size);line-height:1.6;min-width:0}
+.site-shell .project-copy small,.site-shell .project-type,.site-shell .tags span,.site-shell footer p{font-size:.875rem;line-height:1.6}
+.site-shell .project-type{max-width:calc(100% - 36px);overflow-wrap:anywhere}
+.site-shell .service-card-link h3,.site-shell .value-grid h3{font-size:1.5rem;line-height:1.4}
+.site-shell .section-heading{align-items:center}
+.site-shell .section-heading>p{margin:0}
+.site-shell .value-grid p,.site-shell .steps p{max-width:36ch}
+.site-shell .contact form .button{white-space:normal;text-align:center;padding-block:14px}
+@media(max-width:1200px) and (min-width:901px){.site-shell .project-card{grid-template-columns:1fr}.site-shell .project-visual{min-height:210px}}
+
 /* Light pulses follow the existing skyline without moving the photograph */
 .hero.hero-animated{overflow:hidden;background-image:none}
 .hero-skyline{position:absolute;inset:0;container-type:size;pointer-events:none;z-index:-2;overflow:hidden}
