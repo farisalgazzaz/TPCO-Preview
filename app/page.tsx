@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { services } from './services/content';
 import { useLanguage } from './use-language';
 import { SiteHeader } from './site-header';
@@ -18,6 +18,7 @@ const copy = {
 
 export default function Home() {
   const [lang, setLang] = useLanguage();
+  const [motionPaused, setMotionPaused] = useState(false);
   const ar = lang === 'ar'; const t = copy[lang];
   function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); const data = new FormData(event.currentTarget);
@@ -27,7 +28,21 @@ export default function Home() {
   return (
     <main lang={lang} dir={ar ? 'rtl' : 'ltr'} className="site-shell">
       <SiteHeader lang={lang} setLang={setLang} />
-      <section className="hero" id="top"><div className="hero-copy"><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}<span>↗</span></a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div><p className="marker">{t.marker}</p></div></section>
+      <section className={`hero hero-animated${motionPaused ? ' motion-paused' : ''}`} id="top">
+        <svg className="hero-light-lines" viewBox="0 0 2048 1152" width="2048" height="1152" aria-hidden="true" focusable="false">
+          <g fill="none" strokeLinecap="round">
+            <path d="M218 893 L218 295" />
+            <path d="M358 902 L355 325" />
+            <path d="M462 907 L494 226 L535 217" />
+            <path d="M539 927 L558 227 L585 251" />
+            <path d="M594 922 L594 574 L644 560" />
+            <path d="M678 930 L678 663 L738 649" />
+            <path d="M809 932 L808 663 L841 637" />
+          </g>
+        </svg>
+        <div className="hero-copy"><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}<span>↗</span></a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div></div>
+        <button type="button" className="hero-motion-toggle" aria-pressed={motionPaused} onClick={() => setMotionPaused(!motionPaused)}>{ar ? (motionPaused ? 'تشغيل الحركة' : 'إيقاف الحركة') : (motionPaused ? 'Play animation' : 'Pause animation')}</button>
+      </section>
       <section className="about section-pad" id="about"><img className="section-clip about-clip" src="/brand/clip-angle.png" alt="" aria-hidden="true" /><div className="about-head"><div><h2>{t.aboutTitle}</h2></div><p className="lead-copy">{t.aboutText}</p></div><div className="value-grid">{t.values.map(value=><article key={value[0]}><h3>{value[0]}</h3><p>{value[1]}</p></article>)}</div></section>
       <section className="services section-pad" id="services"><div className="section-heading light"><div><h2>{t.servicesTitle}</h2></div><p>{t.servicesIntro}</p></div><div className="services-grid-full">{services.map(service=><a className="service-detail service-card-link" key={service.n} href={`/services/${service.slug}?lang=${lang}`}><div className="service-top"><b className="glyph" aria-hidden="true">{service.glyph}</b></div><h3>{ar?service.ar:service.en}</h3><p>{ar?service.descAr:service.descEn}</p><span className="detail-link">{t.details}</span></a>)}</div></section>
       <section className="approach section-pad" id="approach"><img className="section-clip approach-clip" src="/brand/clip-links.png" alt="" aria-hidden="true" /><h2>{t.methodTitle}</h2><div className="steps">{t.steps.map(step=><article key={step[0]}><div className="step-dot" /><h3>{step[1]}</h3><p>{step[2]}</p></article>)}</div></section>

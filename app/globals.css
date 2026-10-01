@@ -1,5 +1,24 @@
 @import 'tailwindcss';
 
+/* Light pulses follow the existing skyline without moving the photograph */
+.hero.hero-animated{overflow:hidden}
+.hero-light-lines{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;z-index:0;opacity:.65}
+.hero-light-lines path{stroke:#a8edff;stroke-width:2;stroke-dasharray:72 980;stroke-dashoffset:1052;filter:drop-shadow(0 0 5px #3fa9ff);animation:skyline-light 10s linear infinite}
+.hero-light-lines path:nth-child(2){animation-delay:-4s}
+.hero-light-lines path:nth-child(3){animation-delay:-7s;animation-duration:12s}
+.hero-light-lines path:nth-child(4){animation-delay:-2s}
+.hero-light-lines path:nth-child(5){animation-delay:-8s;stroke:#bcaaff}
+.hero-light-lines path:nth-child(6){animation-delay:-5s;animation-duration:11s}
+.hero-light-lines path:nth-child(7){animation-delay:-1s}
+.motion-paused .hero-light-lines path{animation-play-state:paused}
+.hero-motion-toggle{position:absolute;bottom:24px;inset-inline-end:clamp(24px,5vw,80px);z-index:3;border:1px solid #ffffff40;border-radius:24px;background:#09132bb3;color:#dce6f5;font-size:14px;padding:10px 16px;cursor:pointer;min-height:44px}
+.hero-motion-toggle:hover{background:#202d4d}
+.hero-motion-toggle:focus-visible{outline:2px solid #d2c6ff;outline-offset:4px}
+@keyframes skyline-light{to{stroke-dashoffset:0}}
+@media(max-width:900px){.hero-light-lines{object-position:39% center;opacity:.45}}
+@media(max-width:560px){.hero-light-lines{object-position:34% center;opacity:.3}}
+@media(prefers-reduced-motion:reduce){.hero-light-lines,.hero-motion-toggle{display:none}.hero-light-lines path{animation:none}}
+
 /* Shared, responsive primary navigation */
 html{scroll-padding-top:124px}
 .topbar.interactive-topbar{position:fixed;height:104px;gap:24px;transition:background .25s,box-shadow .25s;z-index:50}
