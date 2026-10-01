@@ -31,8 +31,16 @@ export default function Home() {
       <section className={`hero hero-animated${motionPaused ? ' motion-paused' : ''}`} id="top">
         <div className="hero-skyline" aria-hidden="true">
         <svg className="hero-light-lines" viewBox="0 0 2048 1152" width="2048" height="1152" focusable="false">
-          <image href="/riyadh-digital-hero-lights-v2.png" width="2048" height="1152" preserveAspectRatio="none" />
-          <g fill="none" strokeLinecap="round">
+          <defs>
+            <radialGradient id="building-light-glow">
+              <stop offset="0" stopColor="#e9fcff" stopOpacity=".95" />
+              <stop offset=".15" stopColor="#9ceeff" stopOpacity=".8" />
+              <stop offset=".4" stopColor="#38bfff" stopOpacity=".35" />
+              <stop offset="1" stopColor="#38bfff" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <image href="/riyadh-digital-hero.png" width="2048" height="1152" preserveAspectRatio="none" />
+          <g className="hero-edge-trails" fill="none" strokeLinecap="round">
             <path d="M213 878 L215 290" />
             <path d="M373 870 L373 323" />
             <path d="M474 866 L479 528 L488 350 L495 239 L504 225 L531 218" />
@@ -41,6 +49,17 @@ export default function Home() {
             <path d="M686 668 L686 559 L628 570" />
             <path d="M882 733 L882 648 L842 631" />
           </g>
+          {[
+            [[215, 290], [373, 323]],
+            [[214, 598], [373, 598]],
+            [[504, 225], [587, 246]],
+            [[479, 528], [597, 532]],
+          ].map((pair, index) => <g className={`hero-emitter-pair emitter-pair-${index}`} key={index}>
+            {pair.map(([x, y]) => <g key={`${x}-${y}`} transform={`translate(${x} ${y})`}>
+              <circle r="26" fill="url(#building-light-glow)" />
+              <circle r="2.5" fill="#e9fcff" />
+            </g>)}
+          </g>)}
         </svg>
         </div>
         <div className="hero-copy"><h1>{t.title}</h1><p className="hero-intro">{t.intro}</p><div className="hero-actions"><a className="button primary" href="#services">{t.primary}<span>↗</span></a><a className="button ghost" href="https://wa.me/966505527636" target="_blank" rel="noreferrer">{t.secondary}</a></div></div>

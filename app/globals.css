@@ -4,7 +4,12 @@
 .hero.hero-animated{overflow:hidden;background-image:none}
 .hero-skyline{position:absolute;inset:0;container-type:size;pointer-events:none;z-index:-2;overflow:hidden}
 .hero-light-lines{position:absolute;left:50%;top:50%;width:max(100cqw,177.777778cqh);height:max(100cqh,56.25cqw);max-width:none;transform:translate(-50%,-50%)}
-.hero-light-lines g{opacity:.65}
+.hero-light-lines .hero-edge-trails{opacity:.65}
+.hero-emitter-pair{opacity:0;animation:building-emission 6s ease-in-out infinite}
+.emitter-pair-1{animation-delay:-3s}
+.emitter-pair-2{animation-delay:-1.5s}
+.emitter-pair-3{animation-delay:-4.5s}
+@keyframes building-emission{0%,15%,85%,100%{opacity:0}35%,60%{opacity:1}}
 .hero-light-lines path{stroke:#a8edff;stroke-width:1.5;stroke-dasharray:72 980;stroke-dashoffset:1052;animation:skyline-light 10s linear infinite}
 .hero-light-lines path:nth-child(2){animation-delay:-4s}
 .hero-light-lines path:nth-child(3){animation-delay:-7s;animation-duration:12s}
@@ -12,14 +17,14 @@
 .hero-light-lines path:nth-child(5){animation-delay:-8s;stroke:#bcaaff}
 .hero-light-lines path:nth-child(6){animation-delay:-5s;animation-duration:11s}
 .hero-light-lines path:nth-child(7){animation-delay:-1s}
-.motion-paused .hero-light-lines path{animation-play-state:paused}
+.motion-paused .hero-light-lines path,.motion-paused .hero-emitter-pair{animation-play-state:paused}
 .hero-motion-toggle{position:absolute;bottom:24px;inset-inline-end:clamp(24px,5vw,80px);z-index:3;border:1px solid #ffffff40;border-radius:24px;background:#09132bb3;color:#dce6f5;font-size:14px;padding:10px 16px;cursor:pointer;min-height:44px}
 .hero-motion-toggle:hover{background:#202d4d}
 .hero-motion-toggle:focus-visible{outline:2px solid #d2c6ff;outline-offset:4px}
 @keyframes skyline-light{to{stroke-dashoffset:0}}
-@media(max-width:900px){.hero-light-lines{left:39%;transform:translate(-39%,-50%)}.hero-light-lines g{opacity:.45}}
-@media(max-width:560px){.hero-light-lines{left:34%;transform:translate(-34%,-50%)}.hero-light-lines g{opacity:.3}}
-@media(prefers-reduced-motion:reduce){.hero-light-lines g,.hero-motion-toggle{display:none}.hero-light-lines path{animation:none}}
+@media(max-width:900px){.hero-light-lines{left:39%;transform:translate(-39%,-50%)}.hero-light-lines .hero-edge-trails{opacity:.45}}
+@media(max-width:560px){.hero-light-lines{left:34%;transform:translate(-34%,-50%)}.hero-light-lines .hero-edge-trails{opacity:.3}}
+@media(prefers-reduced-motion:reduce){.hero-light-lines g,.hero-motion-toggle{display:none}.hero-light-lines path,.hero-emitter-pair{animation:none}}
 
 /* Shared, responsive primary navigation */
 html{scroll-padding-top:124px}
