@@ -204,6 +204,19 @@ html{scroll-padding-top:124px}
 .approach-clip{width:min(32vw,400px);inset-inline-end:-7%;bottom:-28%;opacity:.065;transform:rotate(-12deg)}
 .approach>.eyebrow,.approach>h2,.approach>.steps{position:relative;z-index:1}
 .contact{grid-template-columns:minmax(270px,.82fr) minmax(220px,.64fr) minmax(380px,1.08fr);gap:42px;align-items:end;overflow:hidden}
+.contact.contact-conversation{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.contact-story{min-width:0;display:grid;gap:28px}
+.contact-team-photo{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px}
+.contact-conversation form{min-width:0;width:100%;max-width:100%;grid-template-columns:repeat(2,minmax(0,1fr));padding:clamp(22px,3vw,40px);margin:0;align-self:center;border-radius:16px;gap:24px 18px}
+.contact-conversation label{min-width:0;color:#e0e4ef}
+.contact-conversation input,.contact-conversation textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;min-width:0;border:1px solid #536078;border-radius:8px;background:#10182b;padding:12px 14px;transition:border-color .2s,box-shadow .2s}
+.contact-conversation input:focus,.contact-conversation textarea:focus{border-color:#b7a9ff;box-shadow:0 0 0 3px rgba(183,169,255,.16)}
+.contact-conversation textarea{min-height:150px}
+.contact-conversation form .button{width:100%;min-width:0;justify-self:stretch;gap:12px}
+.contact-conversation .contact-direct{margin-top:0;padding-top:24px;border-top:1px solid #313951}
+.contact-conversation .contact-direct small{color:#b5bfd3}
+@media(max-width:900px){.contact.contact-conversation{grid-template-columns:minmax(0,1fr)}.contact-conversation .contact-copy{grid-column:auto}}
+@media(max-width:560px){.contact-conversation form{grid-template-columns:minmax(0,1fr)}.contact-conversation label{grid-column:1/-1}}
 .contact-copy{align-self:center}
 .contact-copy h2{font-size:clamp(38px,4.4vw,62px)}
 .contact-person{position:relative;min-height:430px;height:100%;max-height:520px;overflow:hidden;border-radius:180px 180px 16px 16px;background:#18213c;isolation:isolate}

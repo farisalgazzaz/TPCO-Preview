@@ -71,7 +71,20 @@ export default function Home() {
       <section className="approach section-pad" id="approach"><img className="section-clip approach-clip" src="/brand/clip-links.png" alt="" aria-hidden="true" /><h2>{t.methodTitle}</h2><div className="steps">{t.steps.map(step=><article key={step[0]}><div className="step-dot" /><h3>{step[1]}</h3><p>{step[2]}</p></article>)}</div></section>
       <section className="projects section-pad" id="projects"><div className="section-heading project-heading"><div><h2>{t.projectsTitle}</h2></div><p>{t.projectsIntro}</p></div><div className="project-grid">{projects.map(project=><article className={`project-card ${project.tone}`} key={project.no}><div className="project-visual"><div className="project-rings"><i/><i/><i/></div><span className="project-type">{ar?project.typeAr:project.typeEn}</span></div><div className="project-copy"><small>{ar?project.clientAr:project.clientEn}</small><h3>{ar?project.titleAr:project.titleEn}</h3><p>{ar?project.descAr:project.descEn}</p><div className="tags">{(ar?project.tagsAr:project.tagsEn).map(tag=><span key={tag}>{tag}</span>)}</div></div></article>)}</div></section>
       <TeamExperience lang={lang} />
-      <section className="contact section-pad" id="contact"><div className="contact-copy"><h2>{t.contactTitle}</h2><p>{t.contactText}</p><div className="contact-direct"><small>{t.direct}</small><a href="https://wa.me/966505527636" target="_blank" rel="noreferrer">+966 50 552 7636 ↗</a></div></div><div className="contact-person"><img className="contact-clip" src="/brand/clip-panel.png" alt="" aria-hidden="true" /><img className="contact-photo" src="/hero-natural.png" alt={ar?'مستشار سعودي في التحول الرقمي':'Saudi digital transformation consultant'} /></div><form onSubmit={submitContact}><label>{t.fields[0]}<input required name="name" autoComplete="name" /></label><label>{t.fields[1]}<input required type="email" name="email" autoComplete="email" /></label><label>{t.fields[2]}<input required name="organization" autoComplete="organization" /></label><label className="full">{t.fields[3]}<textarea required name="message" rows={3} /></label><button className="button primary full" type="submit">{t.send}<span>↗</span></button></form></section>
+      <section className="contact contact-conversation section-pad" id="contact" aria-labelledby="contact-title">
+        <div className="contact-story">
+          <div className="contact-copy"><h2 id="contact-title">{t.contactTitle}</h2><p>{t.contactText}</p></div>
+          <img className="contact-team-photo" src="/saudi-team-conversation.webp" width="1536" height="1024" loading="lazy" alt={ar ? 'مشهد توضيحي لمهنيين سعوديين يتبادلون الأفكار في اجتماع عمل' : 'Illustrative scene of Saudi professionals sharing ideas in a collaborative meeting'} />
+        </div>
+        <form onSubmit={submitContact} aria-label={ar ? 'نموذج التواصل' : 'Contact form'}>
+          <label>{t.fields[0]}<input required name="name" autoComplete="name" /></label>
+          <label>{t.fields[1]}<input required type="email" name="email" autoComplete="email" dir="ltr" /></label>
+          <label className="full">{t.fields[2]}<input required name="organization" autoComplete="organization" /></label>
+          <label className="full">{t.fields[3]}<textarea required name="message" rows={5} /></label>
+          <button className="button primary full" type="submit">{t.send}</button>
+          <div className="contact-direct full"><small>{t.direct}</small><a href="https://wa.me/966505527636" target="_blank" rel="noreferrer">+966 50 552 7636</a></div>
+        </form>
+      </section>
       <footer><a href="#top" className="brand" aria-label="TPCO home"><img className="brand-logo footer-logo" src="/brand/tpco-logo-white.svg" alt={ar?'شركة ركيزة التحول':'Transformation Pillar Company'} /></a><p>{t.rights}</p><a href="#top" className="back-top">↑</a></footer>
     </main>
   );
